@@ -85,6 +85,7 @@ public class GOT {
 		DEVS.add("56c71aab-8a68-465d-b386-5f721dd68df6");
 		DEVS.add("188e4e9c-8c67-443d-9b6c-a351076a43e3");
 		DEVS.add("f8cc9b45-509a-4034-8740-0b84ce7e4492");
+		DEVS.add("ebb9036c-0f02-40ec-939e-fabae6d2ab25");
 	}
 
 	private static Map<String, Integer> getModContentInfo() {
