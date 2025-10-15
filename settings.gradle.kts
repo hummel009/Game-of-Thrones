@@ -6,7 +6,6 @@ pluginManagement {
 		maven {
 			name = "GTNH Maven"
 			url = uri("https://nexus.gtnewhorizons.com/repository/public/")
-			isAllowInsecureProtocol = true
 			mavenContent {
 				includeGroup("com.gtnewhorizons")
 				includeGroup("com.gtnewhorizons.retrofuturagradle")
@@ -24,7 +23,6 @@ dependencyResolutionManagement {
 		maven {
 			name = "GTNH Maven"
 			url = uri("https://nexus.gtnewhorizons.com/repository/public/")
-			isAllowInsecureProtocol = true
 			mavenContent {
 				includeGroup("com.gtnewhorizons")
 				includeGroup("com.gtnewhorizons.retrofuturagradle")
