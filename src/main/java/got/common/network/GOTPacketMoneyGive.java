@@ -4,6 +4,7 @@ import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
+import got.GOT;
 import got.common.GOTLevelData;
 import got.common.GOTPlayerData;
 import got.common.block.other.GOTBlockIronBank;
@@ -17,11 +18,8 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 
 import java.io.IOException;
-import java.util.UUID;
 
 public class GOTPacketMoneyGive extends GOTPacketMoney {
-	private static final UUID HUMMEL_UUID = UUID.fromString("9aee5b32-8e19-4d4b-a2d6-1318af62733d");
-
 	private ItemStack item;
 
 	@SuppressWarnings("unused")
@@ -60,7 +58,7 @@ public class GOTPacketMoneyGive extends GOTPacketMoney {
 				EntityPlayerMP player = context.getServerHandler().playerEntity;
 				GOTPlayerData pd = GOTLevelData.getData(player);
 				int cost = GOTBlockIronBank.BUY.get(item);
-				if (HUMMEL_UUID.equals(player.getUniqueID())) {
+				if (GOT.DEVS.contains(player.getUniqueID())) {
 					player.inventory.addItemStackToInventory(item);
 				} else if (pd.getBalance() >= cost && player.inventory.addItemStackToInventory(item)) {
 					int money = pd.getBalance();
