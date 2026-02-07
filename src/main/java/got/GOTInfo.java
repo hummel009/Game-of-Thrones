@@ -20,6 +20,7 @@ public class GOTInfo {
 		AUTHORS.add("RoobimWu");
 		AUTHORS.add("DAndMaster");
 		AUTHORS.add("VVVIP2");
+		AUTHORS.add("Bstrddlover");
 		AUTHORS.add("Dimagic");
 		AUTHORS.add("sashar2000r");
 		AUTHORS.add("Danvintius Bookix");
