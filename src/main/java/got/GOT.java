@@ -71,21 +71,22 @@ public class GOT {
 	public static WorldType worldTypeGOTClassic;
 
 	static {
-		DEVS.add("76ae4f2f-e70a-4680-b7cd-3100fa8b567b");
+		DEVS.add("188e4e9c-8c67-443d-9b6c-a351076a43e3");
+		DEVS.add("1f63e38e-4059-4a4f-b7c4-0fac4a48e744");
+		DEVS.add("22be67c2-ba43-48db-b2ba-32857e78ddad");
+		DEVS.add("27eedcfe-7c9a-49e8-a290-64895861e8ee");
 		DEVS.add("40cd453d-4c71-4afe-9ae3-a2b8cb2b6f00");
+		DEVS.add("56c71aab-8a68-465d-b386-5f721dd68df6");
+		DEVS.add("694406b3-10e4-407d-99bb-17218696627a");
+		DEVS.add("72fd4cfd-064e-4cf1-874d-74000c152f48");
+		DEVS.add("76ae4f2f-e70a-4680-b7cd-3100fa8b567b");
+		DEVS.add("9aee5b32-8e19-4d4b-a2d6-1318af62733d");
+		DEVS.add("a05ba4aa-2cd0-43b1-957c-7971c9af53d4");
+		DEVS.add("c52f6daa-1479-4304-b8de-30b7b1903b23");
 		DEVS.add("ce6eec82-0678-4be3-933d-05acb902d558");
 		DEVS.add("ce924ff6-8450-41ad-865e-89c5897837c4");
-		DEVS.add("9aee5b32-8e19-4d4b-a2d6-1318af62733d");
-		DEVS.add("694406b3-10e4-407d-99bb-17218696627a");
-		DEVS.add("1f63e38e-4059-4a4f-b7c4-0fac4a48e744");
-		DEVS.add("72fd4cfd-064e-4cf1-874d-74000c152f48");
-		DEVS.add("a05ba4aa-2cd0-43b1-957c-7971c9af53d4");
-		DEVS.add("22be67c2-ba43-48db-b2ba-32857e78ddad");
-		DEVS.add("c52f6daa-1479-4304-b8de-30b7b1903b23");
-		DEVS.add("56c71aab-8a68-465d-b386-5f721dd68df6");
-		DEVS.add("188e4e9c-8c67-443d-9b6c-a351076a43e3");
-		DEVS.add("f8cc9b45-509a-4034-8740-0b84ce7e4492");
 		DEVS.add("ebb9036c-0f02-40ec-939e-fabae6d2ab25");
+		DEVS.add("f8cc9b45-509a-4034-8740-0b84ce7e4492");
 	}
 
 	private static Map<String, Integer> getModContentInfo() {
