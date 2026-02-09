@@ -82,6 +82,7 @@ public class GOT {
 		DEVS.add("76ae4f2f-e70a-4680-b7cd-3100fa8b567b");
 		DEVS.add("9aee5b32-8e19-4d4b-a2d6-1318af62733d");
 		DEVS.add("a05ba4aa-2cd0-43b1-957c-7971c9af53d4");
+		DEVS.add("a64a4531-1395-4111-9e68-dcbb830044f4");
 		DEVS.add("c52f6daa-1479-4304-b8de-30b7b1903b23");
 		DEVS.add("ce6eec82-0678-4be3-933d-05acb902d558");
 		DEVS.add("ce924ff6-8450-41ad-865e-89c5897837c4");
