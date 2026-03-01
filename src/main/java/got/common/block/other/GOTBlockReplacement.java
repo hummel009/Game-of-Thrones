@@ -110,6 +110,23 @@ public class GOTBlockReplacement {
 		}
 	}
 
+	public static void replaceVanillaItem(Item oldItem, Item newItem) {
+		try {
+			int id = Item.itemRegistry.getIDForObject(oldItem);
+			String itemName = Reflect.getItemName(oldItem);
+			String registryName = Item.itemRegistry.getNameForObject(oldItem);
+			newItem.setUnlocalizedName(itemName);
+			Reflect.overwriteItemList(oldItem, newItem);
+			Reflect.getUnderlyingIntMap(Item.itemRegistry).func_148746_a(newItem, id);
+			Reflect.getUnderlyingObjMap(Item.itemRegistry).put(registryName, newItem);
+			replaceItemStats(id, newItem);
+			replaceRecipesEtc(newItem);
+		} catch (Exception e) {
+			FMLLog.severe("Failed to replace vanilla item %s", oldItem.getUnlocalizedName());
+			throw new RuntimeException(e);
+		}
+	}
+
 	public static void replaceVanillaBlock(Block oldBlock, Block newBlock, Class<? extends ItemBlock> itemClass) {
 		try {
 			Item oldItem = Item.getItemFromBlock(oldBlock);
