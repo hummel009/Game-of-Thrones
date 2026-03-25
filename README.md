@@ -9,7 +9,7 @@ Based on the TV series «Game of Thrones» and the works of J. Martin, Game of T
 
 Lots of new blocks, items, weapons, mobs and structures await you. Explore regions of the world, visiting cities and castles, mining new ores, meeting both friends and enemies. Trade, earn achievements, complete tasks, collect an army. Choose which side you want to fight on!
 
-![Logo]
+![README]
 
 </div>
 
@@ -21,7 +21,7 @@ Lots of new blocks, items, weapons, mobs and structures await you. Explore regio
 
 [Rinth]: https://modrinth.com/mod/gotminecraftmod
 
-[Logo]: readme.jpg
+[README]: README.jpg
 
 [Wiki]: https://gotminecraftmod.fandom.com/ru
 
