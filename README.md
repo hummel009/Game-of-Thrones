@@ -5,6 +5,10 @@
 [![Button Rinth]][Rinth]
 [![Button Wiki]][Wiki]
 
+Based on the TV series «Game of Thrones» and the works of J. Martin, Game of Thrones Mod adds the world of Game of Thrones and its peoples to Minecraft.
+
+Lots of new blocks, items, weapons, mobs and structures await you. Explore regions of the world, visiting cities and castles, mining new ores, meeting both friends and enemies. Trade, earn achievements, complete tasks, collect an army. Choose which side you want to fight on!
+
 ![Logo]
 
 </div>
