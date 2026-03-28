@@ -1,0 +1,21 @@
+package io.github.hummel009.minecraft.got.client.gui;
+
+import io.github.hummel009.minecraft.got.common.data.GOTUnitTradeEntries;
+import io.github.hummel009.minecraft.got.common.entity.other.iface.GOTMercenary;
+import io.github.hummel009.minecraft.got.common.entity.other.utils.GOTMercenaryTradeEntry;
+import io.github.hummel009.minecraft.got.common.entity.other.utils.GOTUnitTradeEntry;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
+
+import java.util.ArrayList;
+
+public class GOTGuiMercenaryHire extends GOTGuiHireBase {
+	public GOTGuiMercenaryHire(EntityPlayer entityplayer, GOTMercenary mercenary, World world) {
+		super(entityplayer, mercenary, world);
+		GOTMercenaryTradeEntry e = GOTMercenaryTradeEntry.createFor(mercenary);
+		ArrayList<GOTUnitTradeEntry> sus = new ArrayList<>();
+		sus.add(e);
+		GOTUnitTradeEntries trades = new GOTUnitTradeEntries(0.0f, sus);
+		setTrades(trades);
+	}
+}

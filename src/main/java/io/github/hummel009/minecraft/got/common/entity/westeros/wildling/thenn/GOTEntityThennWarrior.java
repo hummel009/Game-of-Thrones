@@ -1,0 +1,39 @@
+package io.github.hummel009.minecraft.got.common.entity.westeros.wildling.thenn;
+
+import io.github.hummel009.minecraft.got.common.data.GOTItems;
+import io.github.hummel009.minecraft.got.common.entity.other.utils.GOTWeaponSetFactory;
+import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
+public class GOTEntityThennWarrior extends GOTEntityThenn {
+	@SuppressWarnings({"WeakerAccess", "unused"})
+	public GOTEntityThennWarrior(World world) {
+		super(world);
+		addTargetTasks(true);
+	}
+
+	@Override
+	public float getReputationBonus() {
+		return 2.0f;
+	}
+
+	@Override
+	public IEntityLivingData onSpawnWithEgg(IEntityLivingData data) {
+		IEntityLivingData entityData = super.onSpawnWithEgg(data);
+
+		GOTWeaponSetFactory.setupPrimitiveIronWeaponSet(this, rand, false);
+
+		setCurrentItemOrArmor(1, new ItemStack(GOTItems.furBoots));
+		setCurrentItemOrArmor(2, new ItemStack(GOTItems.furLeggings));
+		setCurrentItemOrArmor(3, new ItemStack(GOTItems.furChestplate));
+		setCurrentItemOrArmor(4, new ItemStack(GOTItems.furHelmet));
+
+		return entityData;
+	}
+
+	@Override
+	public void setupNPCGender() {
+		familyInfo.setMale(true);
+	}
+}

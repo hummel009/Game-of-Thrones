@@ -1,0 +1,51 @@
+package io.github.hummel009.minecraft.got.common.entity.westeros.wildling;
+
+import io.github.hummel009.minecraft.got.common.data.GOTAchievement;
+import io.github.hummel009.minecraft.got.common.data.GOTItems;
+import io.github.hummel009.minecraft.got.common.entity.other.GOTEntityGiantBase;
+import io.github.hummel009.minecraft.got.common.entity.other.GOTEntityNPC;
+import io.github.hummel009.minecraft.got.common.faction.GOTFaction;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
+
+public class GOTEntityGiant extends GOTEntityGiantBase {
+	@SuppressWarnings({"WeakerAccess", "unused"})
+	public GOTEntityGiant(World world) {
+		super(world);
+	}
+
+	@Override
+	public GOTFaction getFaction() {
+		return GOTFaction.WILDLING;
+	}
+
+	@Override
+	public float getReputationBonus() {
+		return 10.0f;
+	}
+
+	@Override
+	public GOTAchievement getKillAchievement() {
+		return GOTAchievement.killGiant;
+	}
+
+	@Override
+	public void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(100.0);
+	}
+
+	@Override
+	public void dropFewItems(boolean flag, int i) {
+		dropItem(GOTItems.fur, 10);
+	}
+
+	@Override
+	public String getSpeechBank(GOTEntityNPC npc, EntityPlayer entityPlayer) {
+		if (isFriendly(entityPlayer)) {
+			return "special/giant_friendly";
+		}
+		return "special/giant_hostile";
+	}
+}

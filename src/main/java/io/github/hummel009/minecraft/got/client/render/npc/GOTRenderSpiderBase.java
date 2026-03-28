@@ -1,0 +1,52 @@
+package io.github.hummel009.minecraft.got.client.render.npc;
+
+import io.github.hummel009.minecraft.got.client.GOTTextures;
+import io.github.hummel009.minecraft.got.client.model.GOTModelSpider;
+import io.github.hummel009.minecraft.got.client.render.other.GOTGlowingEyes;
+import io.github.hummel009.minecraft.got.client.render.other.GOTNPCRendering;
+import io.github.hummel009.minecraft.got.common.entity.other.GOTEntityNPC;
+import io.github.hummel009.minecraft.got.common.entity.other.GOTEntitySpiderBase;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
+
+public abstract class GOTRenderSpiderBase extends RenderLiving {
+	private static final GOTGlowingEyes.Model EYES_MODEL = new GOTModelSpider(0.55f);
+
+	protected GOTRenderSpiderBase() {
+		super(new GOTModelSpider(0.5f), 1.0f);
+		setRenderPassModel(new GOTModelSpider(0.5f));
+	}
+
+	@Override
+	public void doRender(EntityLiving entity, double d, double d1, double d2, float f, float f1) {
+		super.doRender(entity, d, d1, d2, f, f1);
+		if (Minecraft.isGuiEnabled() && ((GOTEntityNPC) entity).getHireableInfo().getHiringPlayer() == renderManager.livingPlayer) {
+			GOTNPCRendering.renderHiredIcon(entity, d, d1 + 0.5, d2);
+			GOTNPCRendering.renderNPCHealthBar(entity, d, d1 + 0.5, d2);
+		}
+	}
+
+	@Override
+	public float getDeathMaxRotation(EntityLivingBase entity) {
+		return 180.0f;
+	}
+
+	@Override
+	public void preRenderCallback(EntityLivingBase entity, float f) {
+		float scale = ((GOTEntitySpiderBase) entity).getSpiderScaleAmount();
+		GL11.glScalef(scale, scale, scale);
+	}
+
+	@Override
+	public void renderModel(EntityLivingBase entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		super.renderModel(entity, f, f1, f2, f3, f4, f5);
+		ResourceLocation eyes1 = GOTTextures.getEyesTexture(getEntityTexture(entity), new int[][]{new int[]{39, 10}, new int[]{42, 11}, new int[]{44, 11}, new int[]{47, 10}}, 2, 2);
+		ResourceLocation eyes2 = GOTTextures.getEyesTexture(getEntityTexture(entity), new int[][]{new int[]{41, 8}, new int[]{42, 9}, new int[]{45, 9}, new int[]{46, 8}}, 1, 1);
+		GOTGlowingEyes.renderGlowingEyes(entity, eyes1, EYES_MODEL, f, f1, f2, f3, f4, f5);
+		GOTGlowingEyes.renderGlowingEyes(entity, eyes2, EYES_MODEL, f, f1, f2, f3, f4, f5);
+	}
+}

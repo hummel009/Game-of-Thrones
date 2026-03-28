@@ -1,0 +1,10 @@
+package io.github.hummel009.minecraft.got.common.world.structure.essos.qohor;
+
+import io.github.hummel009.minecraft.got.common.world.structure.essos.common.GOTStructureEssosTraining;
+
+public class GOTStructureQohorTraining extends GOTStructureEssosTraining {
+	public GOTStructureQohorTraining(boolean flag) {
+		super(flag);
+		city = City.QOHOR;
+	}
+}

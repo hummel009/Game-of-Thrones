@@ -1,0 +1,40 @@
+package io.github.hummel009.minecraft.got.common.enchant;
+
+import io.github.hummel009.minecraft.got.common.item.GOTWeaponStats;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
+
+public class GOTEnchantmentMeleeReach extends GOTEnchantment {
+	private final float reachFactor;
+
+	@SuppressWarnings("unused")
+	public GOTEnchantmentMeleeReach(String s, float reach) {
+		super(s, GOTEnchantmentType.MELEE);
+		reachFactor = reach;
+		valueModifier = reachFactor;
+	}
+
+	@Override
+	public boolean canApply(ItemStack itemstack, boolean considering) {
+		if (super.canApply(itemstack, considering)) {
+			float reach = GOTWeaponStats.getMeleeReachFactor(itemstack);
+			reach *= reachFactor;
+			return reach <= GOTWeaponStats.MAX_MODIFIABLE_REACH;
+		}
+		return false;
+	}
+
+	@Override
+	public String getDescription(ItemStack itemstack) {
+		return StatCollector.translateToLocalFormatted("got.enchant.meleeReach.desc", formatMultiplicative(reachFactor));
+	}
+
+	@Override
+	public boolean isBeneficial() {
+		return reachFactor >= 1.0F;
+	}
+
+	public float getReachFactor() {
+		return reachFactor;
+	}
+}

@@ -1,0 +1,39 @@
+package io.github.hummel009.minecraft.got.common.network;
+
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import io.github.hummel009.minecraft.got.common.fellowship.GOTFellowship;
+import io.github.hummel009.minecraft.got.common.fellowship.GOTFellowshipClient;
+import io.github.hummel009.minecraft.got.common.fellowship.GOTFellowshipData;
+import io.netty.buffer.ByteBuf;
+
+import java.util.UUID;
+
+public abstract class GOTPacketFellowshipDo implements IMessage {
+	private UUID fellowshipID;
+
+	protected GOTPacketFellowshipDo() {
+	}
+
+	protected GOTPacketFellowshipDo(GOTFellowshipClient fsClient) {
+		fellowshipID = fsClient.getFellowshipID();
+	}
+
+	@Override
+	public void fromBytes(ByteBuf data) {
+		fellowshipID = new UUID(data.readLong(), data.readLong());
+	}
+
+	protected GOTFellowship getActiveFellowship() {
+		return GOTFellowshipData.getActiveFellowship(fellowshipID);
+	}
+
+	protected GOTFellowship getActiveOrDisbandedFellowship() {
+		return GOTFellowshipData.getFellowship(fellowshipID);
+	}
+
+	@Override
+	public void toBytes(ByteBuf data) {
+		data.writeLong(fellowshipID.getMostSignificantBits());
+		data.writeLong(fellowshipID.getLeastSignificantBits());
+	}
+}

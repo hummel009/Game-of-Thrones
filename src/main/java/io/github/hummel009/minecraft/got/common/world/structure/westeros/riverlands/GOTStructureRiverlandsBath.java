@@ -1,0 +1,10 @@
+package io.github.hummel009.minecraft.got.common.world.structure.westeros.riverlands;
+
+import io.github.hummel009.minecraft.got.common.world.structure.westeros.common.GOTStructureWesterosBath;
+
+public class GOTStructureRiverlandsBath extends GOTStructureWesterosBath {
+	public GOTStructureRiverlandsBath(boolean flag) {
+		super(flag);
+		kingdom = Kingdom.RIVERLANDS;
+	}
+}

@@ -1,0 +1,54 @@
+package io.github.hummel009.minecraft.got.common.entity.westeros.legendary.trader;
+
+import io.github.hummel009.minecraft.got.common.data.GOTTradeEntries;
+import io.github.hummel009.minecraft.got.common.entity.other.GOTEntityHumanBase;
+import io.github.hummel009.minecraft.got.common.entity.other.iface.GOTTradeable;
+import io.github.hummel009.minecraft.got.common.faction.GOTFaction;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.ai.EntityAIPanic;
+import net.minecraft.world.World;
+
+public class GOTEntityAemonTargaryen extends GOTEntityHumanBase implements GOTTradeable {
+	@SuppressWarnings({"WeakerAccess", "unused"})
+	public GOTEntityAemonTargaryen(World world) {
+		super(world);
+		setupLegendaryNPC(true);
+	}
+
+	@Override
+	public GOTFaction getFaction() {
+		return GOTFaction.NIGHT_WATCH;
+	}
+
+	@Override
+	public float getReputationBonus() {
+		return 100.0f;
+	}
+
+	@Override
+	public EntityAIBase getAttackAI() {
+		return new EntityAIPanic(this, 1.4);
+	}
+
+	@Override
+	public void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.05);
+	}
+
+	@Override
+	public GOTTradeEntries getSellsPool() {
+		return GOTTradeEntries.MAESTER_SELLS;
+	}
+
+	@Override
+	public GOTTradeEntries getBuysPool() {
+		return GOTTradeEntries.MAESTER_BUYS;
+	}
+
+	@Override
+	public void setupNPCGender() {
+		familyInfo.setMale(true);
+	}
+}

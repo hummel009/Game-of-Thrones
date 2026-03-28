@@ -1,0 +1,11 @@
+package io.github.hummel009.minecraft.got.common.block.other;
+
+import io.github.hummel009.minecraft.got.common.world.biome.essos.GOTBiomeShadowLand;
+import net.minecraft.world.World;
+
+public class GOTBlockAsshaiPlant extends GOTBlockFlower {
+	@Override
+	public boolean canBlockStay(World world, int i, int j, int k) {
+		return GOTBiomeShadowLand.isBasaltSurface(world, i, j - 1, k);
+	}
+}

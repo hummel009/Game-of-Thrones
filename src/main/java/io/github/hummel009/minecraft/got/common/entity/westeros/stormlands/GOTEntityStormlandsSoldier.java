@@ -1,0 +1,52 @@
+package io.github.hummel009.minecraft.got.common.entity.westeros.stormlands;
+
+import io.github.hummel009.minecraft.got.common.data.GOTCapes;
+import io.github.hummel009.minecraft.got.common.data.GOTItems;
+import io.github.hummel009.minecraft.got.common.data.GOTShields;
+import io.github.hummel009.minecraft.got.common.entity.other.utils.GOTWeaponSetFactory;
+import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
+public class GOTEntityStormlandsSoldier extends GOTEntityStormlandsMan {
+	@SuppressWarnings({"WeakerAccess", "unused"})
+	public GOTEntityStormlandsSoldier(World world) {
+		super(world);
+		addTargetTasks(true);
+		spawnRidingHorse = rand.nextInt(10) == 0;
+	}
+
+	@Override
+	public GOTShields getShield() {
+		return GOTShields.STORMLANDS;
+	}
+
+	@Override
+	public GOTCapes getCape() {
+		return GOTCapes.STORMLANDS;
+	}
+
+	@Override
+	public float getReputationBonus() {
+		return 2.0f;
+	}
+
+	@Override
+	public IEntityLivingData onSpawnWithEgg(IEntityLivingData data) {
+		IEntityLivingData entityData = super.onSpawnWithEgg(data);
+
+		GOTWeaponSetFactory.setupIronWeaponSet(this, rand, false);
+
+		setCurrentItemOrArmor(1, new ItemStack(GOTItems.stormlandsBoots));
+		setCurrentItemOrArmor(2, new ItemStack(GOTItems.stormlandsLeggings));
+		setCurrentItemOrArmor(3, new ItemStack(GOTItems.stormlandsChestplate));
+		setCurrentItemOrArmor(4, new ItemStack(GOTItems.stormlandsHelmet));
+
+		return entityData;
+	}
+
+	@Override
+	public void setupNPCGender() {
+		familyInfo.setMale(true);
+	}
+}

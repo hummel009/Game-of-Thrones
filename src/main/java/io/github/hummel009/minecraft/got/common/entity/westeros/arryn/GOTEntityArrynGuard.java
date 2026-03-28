@@ -1,0 +1,50 @@
+package io.github.hummel009.minecraft.got.common.entity.westeros.arryn;
+
+import io.github.hummel009.minecraft.got.common.data.GOTCapes;
+import io.github.hummel009.minecraft.got.common.data.GOTItems;
+import io.github.hummel009.minecraft.got.common.data.GOTShields;
+import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
+public class GOTEntityArrynGuard extends GOTEntityArrynMan {
+	@SuppressWarnings({"WeakerAccess", "unused"})
+	public GOTEntityArrynGuard(World world) {
+		super(world);
+	}
+
+	@Override
+	public GOTShields getShield() {
+		return GOTShields.ARRYNGUARD;
+	}
+
+	@Override
+	public GOTCapes getCape() {
+		return GOTCapes.ARRYNGUARD;
+	}
+
+	@Override
+	public float getReputationBonus() {
+		return 2.0f;
+	}
+
+	@Override
+	public IEntityLivingData onSpawnWithEgg(IEntityLivingData data) {
+		IEntityLivingData entityData = super.onSpawnWithEgg(data);
+
+		npcItemsInv.setMeleeWeapon(new ItemStack(GOTItems.ironPike));
+		npcItemsInv.setIdleItem(npcItemsInv.getMeleeWeapon());
+
+		setCurrentItemOrArmor(1, new ItemStack(GOTItems.arrynguardBoots));
+		setCurrentItemOrArmor(2, new ItemStack(GOTItems.arrynguardLeggings));
+		setCurrentItemOrArmor(3, new ItemStack(GOTItems.arrynguardChestplate));
+		setCurrentItemOrArmor(4, new ItemStack(GOTItems.arrynguardHelmet));
+
+		return entityData;
+	}
+
+	@Override
+	public void setupNPCGender() {
+		familyInfo.setMale(true);
+	}
+}

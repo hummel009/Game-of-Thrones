@@ -1,0 +1,7 @@
+package io.github.hummel009.minecraft.got.common.item.other;
+
+public class GOTItemVessel extends GOTItemMug {
+	public GOTItemVessel() {
+		super(false, false);
+	}
+}

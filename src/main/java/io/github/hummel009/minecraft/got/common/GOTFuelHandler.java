@@ -1,0 +1,28 @@
+package io.github.hummel009.minecraft.got.common;
+
+import cpw.mods.fml.common.IFuelHandler;
+import io.github.hummel009.minecraft.got.common.block.sapling.GOTBlockSaplingBase;
+import io.github.hummel009.minecraft.got.common.data.GOTBlocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+
+public class GOTFuelHandler implements IFuelHandler {
+	public static final GOTFuelHandler INSTANCE = new GOTFuelHandler();
+
+	private GOTFuelHandler() {
+	}
+
+	@Override
+	public int getBurnTime(ItemStack itemstack) {
+		Item item = itemstack.getItem();
+		if (item instanceof ItemBlock && ((ItemBlock) item).field_150939_a instanceof GOTBlockSaplingBase) {
+			return 100;
+		}
+		if (item == Items.reeds || item == Item.getItemFromBlock(GOTBlocks.reeds) || item == Item.getItemFromBlock(GOTBlocks.driedReeds) || item == Item.getItemFromBlock(GOTBlocks.cornStalk)) {
+			return 100;
+		}
+		return 0;
+	}
+}

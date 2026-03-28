@@ -1,0 +1,34 @@
+package io.github.hummel009.minecraft.got.common.item.weapon;
+
+import io.github.hummel009.minecraft.got.common.GOTLevelData;
+import io.github.hummel009.minecraft.got.common.data.GOTAchievement;
+import io.github.hummel009.minecraft.got.common.data.GOTCreativeTabs;
+import io.github.hummel009.minecraft.got.common.dispense.GOTDispenseTermite;
+import io.github.hummel009.minecraft.got.common.entity.other.inanimate.GOTEntityThrownTermite;
+import net.minecraft.block.BlockDispenser;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
+public class GOTItemTermite extends Item {
+	public GOTItemTermite() {
+		setMaxStackSize(16);
+		setCreativeTab(GOTCreativeTabs.TAB_MISC);
+		BlockDispenser.dispenseBehaviorRegistry.putObject(this, new GOTDispenseTermite());
+	}
+
+	@Override
+	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer) {
+		if (!world.isRemote) {
+			world.spawnEntityInWorld(new GOTEntityThrownTermite(world, entityplayer));
+			world.playSoundAtEntity(entityplayer, "random.bow", 0.5f, 0.4f / (itemRand.nextFloat() * 0.4f + 0.8f));
+			if (!entityplayer.capabilities.isCreativeMode) {
+				--itemstack.stackSize;
+			}
+
+			GOTLevelData.getData(entityplayer).addAchievement(GOTAchievement.useTermite);
+		}
+		return itemstack;
+	}
+}

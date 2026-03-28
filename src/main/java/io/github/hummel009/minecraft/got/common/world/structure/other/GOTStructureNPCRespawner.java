@@ -1,0 +1,23 @@
+package io.github.hummel009.minecraft.got.common.world.structure.other;
+
+import io.github.hummel009.minecraft.got.common.entity.other.inanimate.GOTEntityNPCRespawner;
+import net.minecraft.world.World;
+
+import java.util.Random;
+
+public abstract class GOTStructureNPCRespawner extends GOTStructureBase {
+	protected GOTStructureNPCRespawner(boolean flag) {
+		super(flag);
+	}
+
+	@Override
+	public boolean generate(World world, Random random, int i, int j, int k, int rotation) {
+		setOriginAndRotation(world, i, j, k, rotation, 0);
+		GOTEntityNPCRespawner spawner = new GOTEntityNPCRespawner(world);
+		setupRespawner(spawner);
+		placeNPCRespawner(spawner, world, 0, 1, 0);
+		return true;
+	}
+
+	protected abstract void setupRespawner(GOTEntityNPCRespawner var1);
+}

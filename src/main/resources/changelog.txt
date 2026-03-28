@@ -164,7 +164,7 @@ BREAKING CHANGES. NOT COMPATIBLE WITH WORLDS, CREATED WITH VER. <24.X
 * Fixed bug with shifted Sothoryos pyramid
 * Fixed bug with dirt path in Asshai
 * Fixed bug with huge trees with broken generation
-* Fixed critical bug caused by disappeared meta-info and broken coremod (horses, fences, etc)
+* Fixed critical bug caused by disappeared meta-info and broken core (horses, fences, etc)
 * Fixed potential bug caused by growing Desert Trees at the top limit of the world (256)
 * FIxed potential bug with rare thenn spawning
 * Fixed bug with glowing titles, that should be visible only during the night
@@ -222,7 +222,7 @@ BREAKING CHANGES. NOT COMPATIBLE WITH WORLDS, CREATED WITH VER. <24.X
 
 >>BUILD 23.02.10
 * Fixed crash in altitude biomes linked to season changes
-* Fixed wrong info in database generator
+* Fixed wrong info in data generator
 * Fixed bug with untranslated labels
 
 >>BUILD 23.02.02
@@ -238,7 +238,7 @@ BREAKING CHANGES. NOT COMPATIBLE WITH WORLDS, CREATED WITH VER. <24.X
 * Improved the craft of valyrian armor. Now the armor is more valuable.
 * Improved Blizzards' drops: 2-3 valyrian powders & 1 nugget per mob.
 * Improved biome tree sets. Now no trees are available from creative only. Every tree can be found in the world.
-* Improved database generator
+* Improved data generator
 
 * Optimized Seasons mechanics. 8x faster and 8x more stable (proved by maths expectation and variance)
 * Optimized lots of places with enum maps
@@ -324,7 +324,7 @@ BREAKING CHANGES. NOT COMPATIBLE WITH WORLDS, CREATED WITH VER. <24.X
 * Improved stats of ifekevrons and stone men
 * Improved summer villages
 * Improved spheres of influence
-* Improved and unlocked database generator
+* Improved and unlocked data generator
 * Improved Mossovy Sopkas
 * Improved King Spears biome
 * Improved map (more accurate country borders)
@@ -1254,7 +1254,7 @@ BREAKING CHANGES. NOT COMPATIBLE WITH WORLDS, CREATED WITH VER. <24.X
 * Upgraded UCP (loading)
 * Upgraded UCP (modinfo)
 * Upgraded UCP (render)
-* Upgraded UCP (databases)
+* Upgraded UCP (datas)
 * Upgraded UCP (village generator)
 * Upgraded UCP (dimensions)
 * Upgraded UCP (config)
@@ -1272,7 +1272,7 @@ BREAKING CHANGES. NOT COMPATIBLE WITH WORLDS, CREATED WITH VER. <24.X
 * Optimized farmer's AI (-14% of lags on servers!)
 * Improved targaryen shield
 * Fixed bug with faction ranks
-* Fixed bug with UCP (coremod)
+* Fixed bug with UCP (core)
 * Fixed bug with UCP (slow horses and bugged spiders)
 * Fixed bug with UCP (factions)
 * Fixed bug with UCP (fences)

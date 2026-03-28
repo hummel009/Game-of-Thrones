@@ -1,0 +1,43 @@
+package io.github.hummel009.minecraft.got.common.entity.sothoryos.summer;
+
+import io.github.hummel009.minecraft.got.common.data.GOTItems;
+import io.github.hummel009.minecraft.got.common.data.GOTTradeEntries;
+import io.github.hummel009.minecraft.got.common.entity.other.iface.GOTTradeable;
+import io.github.hummel009.minecraft.got.common.entity.other.utils.GOTEntityUtils;
+import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
+public class GOTEntitySummerBaker extends GOTEntitySummerMan implements GOTTradeable {
+	@SuppressWarnings({"WeakerAccess", "unused"})
+	public GOTEntitySummerBaker(World world) {
+		super(world);
+	}
+
+	@Override
+	public float getReputationBonus() {
+		return 2.0f;
+	}
+
+	@Override
+	public GOTTradeEntries getSellsPool() {
+		return GOTTradeEntries.BAKER_SELLS;
+	}
+
+	@Override
+	public GOTTradeEntries getBuysPool() {
+		return GOTTradeEntries.BAKER_BUYS;
+	}
+
+	@Override
+	public IEntityLivingData onSpawnWithEgg(IEntityLivingData data) {
+		IEntityLivingData entityData = super.onSpawnWithEgg(data);
+
+		npcItemsInv.setMeleeWeapon(new ItemStack(GOTItems.rollingPin));
+		npcItemsInv.setIdleItem(new ItemStack(GOTItems.oliveBread));
+
+		GOTEntityUtils.setupTurban(this, rand);
+
+		return entityData;
+	}
+}

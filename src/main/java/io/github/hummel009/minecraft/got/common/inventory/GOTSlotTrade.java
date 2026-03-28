@@ -1,0 +1,76 @@
+package io.github.hummel009.minecraft.got.common.inventory;
+
+import io.github.hummel009.minecraft.got.common.data.GOTTradeEntries;
+import io.github.hummel009.minecraft.got.common.entity.other.GOTEntityNPC;
+import io.github.hummel009.minecraft.got.common.entity.other.utils.GOTTradeEntry;
+import io.github.hummel009.minecraft.got.common.item.other.GOTItemCoin;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
+
+public class GOTSlotTrade extends GOTSlotProtected {
+	private final GOTContainerTrade theContainer;
+	private final GOTEntityNPC theEntity;
+	private final GOTTradeEntries.TradeType tradeType;
+
+	public GOTSlotTrade(GOTContainerTrade container, IInventory inv, int i, int j, int k, GOTEntityNPC entity, GOTTradeEntries.TradeType type) {
+		super(inv, i, j, k);
+		theContainer = container;
+		theEntity = entity;
+		tradeType = type;
+	}
+
+	@Override
+	public boolean canTakeStack(EntityPlayer entityplayer) {
+		if (tradeType == GOTTradeEntries.TradeType.SELLS) {
+			if (getTrade() != null && !getTrade().isAvailable()) {
+				return false;
+			}
+			int coins = GOTItemCoin.getInventoryValue(entityplayer, false);
+			if (coins < cost()) {
+				return false;
+			}
+		}
+		return tradeType != GOTTradeEntries.TradeType.BUYS && super.canTakeStack(entityplayer);
+	}
+
+	public int cost() {
+		GOTTradeEntry trade = getTrade();
+		return trade == null ? 0 : trade.getCost();
+	}
+
+	public GOTTradeEntry getTrade() {
+		GOTTradeEntry[] trades = null;
+		if (tradeType == GOTTradeEntries.TradeType.SELLS) {
+			trades = theEntity.getTraderInfo().getBuyTrades();
+		} else if (tradeType == GOTTradeEntries.TradeType.BUYS) {
+			trades = theEntity.getTraderInfo().getSellTrades();
+		}
+		if (trades == null) {
+			return null;
+		}
+		int i = getSlotIndex();
+		if (i >= 0 && i < trades.length) {
+			return trades[i];
+		}
+		return null;
+	}
+
+	@Override
+	public void onPickupFromSlot(EntityPlayer entityplayer, ItemStack itemstack) {
+		if (tradeType == GOTTradeEntries.TradeType.SELLS && !entityplayer.worldObj.isRemote) {
+			GOTItemCoin.takeCoins(cost(), entityplayer);
+		}
+		super.onPickupFromSlot(entityplayer, itemstack);
+		if (tradeType == GOTTradeEntries.TradeType.SELLS) {
+			GOTTradeEntry trade = getTrade();
+			if (!entityplayer.worldObj.isRemote && trade != null) {
+				putStack(trade.createTradeItem());
+				((EntityPlayerMP) entityplayer).sendContainerToPlayer(theContainer);
+				theEntity.getTraderInfo().onTrade(entityplayer, trade, cost());
+				theEntity.playTradeSound();
+			}
+		}
+	}
+}

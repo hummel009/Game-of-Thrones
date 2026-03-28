@@ -1,0 +1,52 @@
+package io.github.hummel009.minecraft.got.common.entity.essos.pentos;
+
+import io.github.hummel009.minecraft.got.common.data.GOTCapes;
+import io.github.hummel009.minecraft.got.common.data.GOTItems;
+import io.github.hummel009.minecraft.got.common.data.GOTShields;
+import io.github.hummel009.minecraft.got.common.entity.other.utils.GOTWeaponSetFactory;
+import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
+public class GOTEntityPentosSoldier extends GOTEntityPentosMan {
+	@SuppressWarnings({"WeakerAccess", "unused"})
+	public GOTEntityPentosSoldier(World world) {
+		super(world);
+		addTargetTasks(true);
+		spawnRidingHorse = rand.nextInt(10) == 0;
+	}
+
+	@Override
+	public GOTCapes getCape() {
+		return GOTCapes.PENTOS;
+	}
+
+	@Override
+	public GOTShields getShield() {
+		return GOTShields.PENTOS;
+	}
+
+	@Override
+	public float getReputationBonus() {
+		return 2.0f;
+	}
+
+	@Override
+	public IEntityLivingData onSpawnWithEgg(IEntityLivingData data) {
+		IEntityLivingData entityData = super.onSpawnWithEgg(data);
+
+		GOTWeaponSetFactory.setupIronWeaponSet(this, rand, true);
+
+		setCurrentItemOrArmor(1, new ItemStack(GOTItems.pentosBoots));
+		setCurrentItemOrArmor(2, new ItemStack(GOTItems.pentosLeggings));
+		setCurrentItemOrArmor(3, new ItemStack(GOTItems.pentosChestplate));
+		setCurrentItemOrArmor(4, new ItemStack(GOTItems.pentosHelmet));
+
+		return entityData;
+	}
+
+	@Override
+	public void setupNPCGender() {
+		familyInfo.setMale(true);
+	}
+}

@@ -1,0 +1,61 @@
+package io.github.hummel009.minecraft.got.common.entity.westeros.legendary.deco;
+
+import io.github.hummel009.minecraft.got.common.data.GOTAchievement;
+import io.github.hummel009.minecraft.got.common.data.GOTItems;
+import io.github.hummel009.minecraft.got.common.entity.other.GOTEntityHumanBase;
+import io.github.hummel009.minecraft.got.common.faction.GOTFaction;
+import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.ai.EntityAIPanic;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
+public class GOTEntityWillasTyrell extends GOTEntityHumanBase {
+	@SuppressWarnings({"WeakerAccess", "unused"})
+	public GOTEntityWillasTyrell(World world) {
+		super(world);
+		setupLegendaryNPC(true);
+	}
+
+	@Override
+	public GOTFaction getFaction() {
+		return GOTFaction.REACH;
+	}
+
+	@Override
+	public float getReputationBonus() {
+		return 200.0f;
+	}
+
+	@Override
+	public GOTAchievement getKillAchievement() {
+		return GOTAchievement.killWillasTyrell;
+	}
+
+	@Override
+	public EntityAIBase getAttackAI() {
+		return new EntityAIPanic(this, 1.4);
+	}
+
+	@Override
+	public void applyEntityAttributes() {
+		super.applyEntityAttributes();
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.05);
+	}
+
+	@Override
+	public IEntityLivingData onSpawnWithEgg(IEntityLivingData data) {
+		IEntityLivingData entityData = super.onSpawnWithEgg(data);
+
+		npcItemsInv.setMeleeWeapon(new ItemStack(GOTItems.walkingStick));
+		npcItemsInv.setIdleItem(new ItemStack(GOTItems.walkingStick));
+
+		return entityData;
+	}
+
+	@Override
+	public void setupNPCGender() {
+		familyInfo.setMale(true);
+	}
+}

@@ -1,0 +1,58 @@
+package io.github.hummel009.minecraft.got.common.entity.westeros.crownlands;
+
+import io.github.hummel009.minecraft.got.common.data.GOTAchievement;
+import io.github.hummel009.minecraft.got.common.data.GOTCapes;
+import io.github.hummel009.minecraft.got.common.data.GOTItems;
+import io.github.hummel009.minecraft.got.common.data.GOTShields;
+import io.github.hummel009.minecraft.got.common.entity.ai.GOTEntityAINearestAttackableTargetPatriot;
+import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
+public class GOTEntityKingsguard extends GOTEntityCrownlandsMan {
+	@SuppressWarnings({"WeakerAccess", "unused"})
+	public GOTEntityKingsguard(World world) {
+		super(world);
+		addTargetTasks(true, GOTEntityAINearestAttackableTargetPatriot.class);
+	}
+
+	@Override
+	public GOTShields getShield() {
+		return GOTShields.CROWNLANDS;
+	}
+
+	@Override
+	public GOTCapes getCape() {
+		return GOTCapes.KINGSGUARD_1;
+	}
+
+	@Override
+	public float getReputationBonus() {
+		return 3.0f;
+	}
+
+	@Override
+	public GOTAchievement getKillAchievement() {
+		return GOTAchievement.killKingsguard;
+	}
+
+	@Override
+	public IEntityLivingData onSpawnWithEgg(IEntityLivingData data) {
+		IEntityLivingData entityData = super.onSpawnWithEgg(data);
+
+		npcItemsInv.setMeleeWeapon(new ItemStack(GOTItems.alloySteelSword));
+		npcItemsInv.setIdleItem(npcItemsInv.getMeleeWeapon());
+
+		setCurrentItemOrArmor(1, new ItemStack(GOTItems.kingsguardBoots));
+		setCurrentItemOrArmor(2, new ItemStack(GOTItems.kingsguardLeggings));
+		setCurrentItemOrArmor(3, new ItemStack(GOTItems.kingsguardChestplate));
+		setCurrentItemOrArmor(4, new ItemStack(GOTItems.kingsguardHelmet));
+
+		return entityData;
+	}
+
+	@Override
+	public void setupNPCGender() {
+		familyInfo.setMale(true);
+	}
+}

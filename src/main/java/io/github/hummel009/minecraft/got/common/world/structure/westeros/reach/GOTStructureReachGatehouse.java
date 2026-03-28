@@ -1,0 +1,10 @@
+package io.github.hummel009.minecraft.got.common.world.structure.westeros.reach;
+
+import io.github.hummel009.minecraft.got.common.world.structure.westeros.common.GOTStructureWesterosGatehouse;
+
+public class GOTStructureReachGatehouse extends GOTStructureWesterosGatehouse {
+	public GOTStructureReachGatehouse(boolean flag) {
+		super(flag);
+		kingdom = Kingdom.REACH;
+	}
+}

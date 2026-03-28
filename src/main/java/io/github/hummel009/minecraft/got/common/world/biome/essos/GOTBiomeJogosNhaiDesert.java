@@ -1,0 +1,76 @@
+package io.github.hummel009.minecraft.got.common.world.biome.essos;
+
+import io.github.hummel009.minecraft.got.common.data.GOTAchievement;
+import io.github.hummel009.minecraft.got.common.data.GOTBlocks;
+import io.github.hummel009.minecraft.got.common.world.biome.GOTBiome;
+import io.github.hummel009.minecraft.got.common.world.biome.variant.GOTBiomeVariant;
+import io.github.hummel009.minecraft.got.common.world.map.GOTBezierType;
+import io.github.hummel009.minecraft.got.common.world.map.GOTWaypoint;
+import io.github.hummel009.minecraft.got.common.world.spawning.GOTEventSpawner;
+import net.minecraft.block.Block;
+import net.minecraft.world.World;
+
+import java.util.Random;
+
+public class GOTBiomeJogosNhaiDesert extends GOTBiomeEssosBase implements GOTBiome.Desert {
+	public GOTBiomeJogosNhaiDesert(int i, boolean major) {
+		super(i, major);
+		topBlock = GOTBlocks.whiteSand;
+		fillerBlock = GOTBlocks.whiteSand;
+
+		preseter.setupDesertView();
+		preseter.setupDesertFlora();
+		preseter.setupDesertFauna();
+		preseter.setupDesertTrees();
+	}
+
+	@Override
+	public GOTWaypoint.Region getBiomeWaypoints() {
+		return GOTWaypoint.Region.ESSOS_SEPARATOR;
+	}
+
+	@Override
+	public GOTAchievement getBiomeAchievement() {
+		return GOTAchievement.enterJogosNhaiDesert;
+	}
+
+	@Override
+	public float getChanceToSpawnAnimals() {
+		return 0.1f;
+	}
+
+	@Override
+	public boolean getEnableRiver() {
+		return false;
+	}
+
+	@Override
+	public GOTEventSpawner.EventChance getBanditChance() {
+		return GOTEventSpawner.EventChance.NEVER;
+	}
+
+	@Override
+	public GOTBezierType getWallBlock() {
+		return GOTBezierType.WALL_YI_TI;
+	}
+
+	@Override
+	public GOTBezierType getRoadBlock() {
+		return GOTBezierType.PATH_SANDY;
+	}
+
+	@Override
+	public void decorate(World world, Random random, int i, int k) {
+		decorator.decorateDesert(world, random, i, k);
+	}
+
+	@Override
+	public void generateBiomeTerrain(World world, Random random, Block[] blocks, byte[] meta, int i, int k, double stoneNoise, int height, GOTBiomeVariant variant) {
+		generator.generateDesertNoise(world, random, blocks, meta, i, k, stoneNoise, height, variant);
+	}
+
+	@Override
+	public GOTBiome.GrassBlockAndMeta getRandomGrass(Random random) {
+		return new GOTBiome.GrassBlockAndMeta(GOTBlocks.aridGrass, 0);
+	}
+}

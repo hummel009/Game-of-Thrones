@@ -1,0 +1,10 @@
+package io.github.hummel009.minecraft.got.common.world.structure.westeros.north;
+
+import io.github.hummel009.minecraft.got.common.world.structure.westeros.common.GOTStructureWesterosWatchtower;
+
+public class GOTStructureNorthWatchtower extends GOTStructureWesterosWatchtower {
+	public GOTStructureNorthWatchtower(boolean flag) {
+		super(flag);
+		kingdom = Kingdom.NORTH;
+	}
+}

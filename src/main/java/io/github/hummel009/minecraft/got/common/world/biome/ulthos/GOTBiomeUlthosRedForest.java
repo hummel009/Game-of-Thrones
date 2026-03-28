@@ -1,0 +1,39 @@
+package io.github.hummel009.minecraft.got.common.world.biome.ulthos;
+
+import io.github.hummel009.minecraft.got.common.data.GOTAchievement;
+import io.github.hummel009.minecraft.got.common.data.GOTSpawnList;
+import io.github.hummel009.minecraft.got.common.world.feature.GOTTreeType;
+import io.github.hummel009.minecraft.got.common.world.spawning.GOTBiomeSpawnList;
+import io.github.hummel009.minecraft.got.common.world.spawning.GOTSpawnListContainer;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class GOTBiomeUlthosRedForest extends GOTBiomeUlthosBase {
+	public GOTBiomeUlthosRedForest(int i, boolean major) {
+		super(i, major);
+		preseter.setupForestView();
+		preseter.setupForestFlora();
+		preseter.setupForestFauna();
+
+		setupDefaultTrees();
+		decorator.addTree(GOTTreeType.ULTHOS_RED_OAK_LARGE, 1000);
+		decorator.addTree(GOTTreeType.ULTHOS_RED_OAK, 250);
+		decorator.addTree(GOTTreeType.ULTHOS_GREEN_OAK_LARGE, 250);
+		decorator.addTree(GOTTreeType.ULTHOS_GREEN_OAK, 50);
+
+		decorator.setTreesPerChunk(8);
+
+		Collection<GOTSpawnListContainer> c0 = new ArrayList<>();
+		c0.add(GOTBiomeSpawnList.entry(GOTSpawnList.ULTHOS, 10).setSpawnChance(SPAWN));
+		npcSpawnList.newFactionList(10).add(c0);
+		Collection<GOTSpawnListContainer> c1 = new ArrayList<>();
+		c1.add(GOTBiomeSpawnList.entry(GOTSpawnList.SOTHORYOS_MILITARY, 4).setSpawnChance(SPAWN));
+		npcSpawnList.newFactionList(0).add(c1);
+	}
+
+	@Override
+	public GOTAchievement getBiomeAchievement() {
+		return GOTAchievement.enterUlthosRedForest;
+	}
+}

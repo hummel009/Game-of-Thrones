@@ -1,0 +1,19 @@
+package io.github.hummel009.minecraft.got.common.world.structure.essos.qohor;
+
+import io.github.hummel009.minecraft.got.common.world.structure.essos.common.GOTStructureEssosFortWall;
+
+public class GOTStructureQohorFortWall extends GOTStructureEssosFortWall {
+	@SuppressWarnings("unused")
+	public GOTStructureQohorFortWall(boolean flag) {
+		super(flag);
+		city = City.QOHOR;
+	}
+
+	public static class Long extends GOTStructureEssosFortWall.Long {
+		public Long(boolean flag) {
+			super(flag);
+			isLong = true;
+			city = City.QOHOR;
+		}
+	}
+}

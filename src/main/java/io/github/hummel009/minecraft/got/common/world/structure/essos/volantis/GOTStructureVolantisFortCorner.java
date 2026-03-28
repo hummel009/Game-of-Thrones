@@ -1,0 +1,10 @@
+package io.github.hummel009.minecraft.got.common.world.structure.essos.volantis;
+
+import io.github.hummel009.minecraft.got.common.world.structure.essos.common.GOTStructureEssosFortCorner;
+
+public class GOTStructureVolantisFortCorner extends GOTStructureEssosFortCorner {
+	public GOTStructureVolantisFortCorner(boolean flag) {
+		super(flag);
+		city = City.VOLANTIS;
+	}
+}
