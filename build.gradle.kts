@@ -2,7 +2,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 plugins {
-	id("com.gtnewhorizons.retrofuturagradle") version "1.4.9"
+	id("com.gtnewhorizons.retrofuturagradle") version "1.4.+"
 }
 
 group = "io.github.hummel009"
